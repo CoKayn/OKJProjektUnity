@@ -29,11 +29,8 @@ public class Player : MonoBehaviour
                 player.position = mousePos;
             }
 
-        }
-
+        }  
         
-
-     
     }
     void OnMouseDown()
     {
