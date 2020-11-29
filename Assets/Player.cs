@@ -31,27 +31,29 @@ public class Player : MonoBehaviour
 
         }
 
-        void OnMouseDown()
-        {
-            isPressed = true;
-            player.isKinematic = true;
-        }
-        void OnMouseUp()
-        {
-            isPressed = false;
-            player.isKinematic = false;
+        
 
-            StartCoroutine(Release());
-        }
+     
+    }
+    void OnMouseDown()
+    {
+        isPressed = true;
+        player.isKinematic = true;
+    }
+    void OnMouseUp()
+    {
+        isPressed = false;
+        player.isKinematic = false;
 
-        IEnumerator Release()
-        {
-            yield return new WaitForSeconds(releaseTime);
+        StartCoroutine(Release());
+    }
+    IEnumerator Release()
+    {
+        yield return new WaitForSeconds(releaseTime);
 
-            GetComponent<SpringJoint2D>().enabled = false;
-            this.enabled = false;
-            yield return new WaitForSeconds(2f);
-           
-        }
+        GetComponent<SpringJoint2D>().enabled = false;
+        this.enabled = false;
+        yield return new WaitForSeconds(2f);
+
     }
 }
