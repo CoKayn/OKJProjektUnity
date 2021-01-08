@@ -4,53 +4,69 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+    private bool grounded;
+    private bool readyToJump;
+    public GameObject line;
+    private float jumpForce = 100;
     public Rigidbody2D player;
-    public Rigidbody2D hook;
 
-    public float releaseTime = .15f;
-    public float maxDragDistance = 2f;
-
-    private bool isPressed = false;
-    
+    // Visuals
+    public LineRenderer lr;
+    void Start()
+    {
+        line = new GameObject();
+        line.transform.position = player.transform.position;
+        line.AddComponent<LineRenderer>();
+        player = GetComponent<Rigidbody2D>();
+        readyToJump = true;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (isPressed)
+        player.freezeRotation = true;
+        Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButton(0)) 
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
+            DrawLine(mousepos);
+            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+            Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
+            lookPos = lookPos - transform.position;
+            float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+            player.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            
+        }
+        
+        if (Input.GetMouseButtonUp(0))
+        {
+            lr.enabled = false;
+            if (!readyToJump) return;
+            float force = Vector3.Distance(player.transform.position, mousepos);
+            player.velocity = player.transform.up * force;
+            readyToJump = false;
+            
+            Debug.Log("asd"+player.transform.forward);
+        }
 
-            if (Vector3.Distance(mousePos, hook.position) > maxDragDistance)
-            {
-                player.position = hook.position + (mousePos - hook.position).normalized * maxDragDistance;
-            }
-            else
-            {
-                player.position = mousePos;
-            }
-
-        }  
+       
+    }
+     void OnCollisionEnter2D(Collision2D collision)
+    {
+        readyToJump = true;
         
     }
-    void OnMouseDown()
-    {
-        isPressed = true;
-        player.isKinematic = true;
-    }
-    void OnMouseUp()
-    {
-        isPressed = false;
-        player.isKinematic = false;
 
-        StartCoroutine(Release());
-    }
-    IEnumerator Release()
+    void DrawLine(Vector3 mousepos)
     {
-        yield return new WaitForSeconds(releaseTime);
-
-        GetComponent<SpringJoint2D>().enabled = false;
-        this.enabled = false;
-        yield return new WaitForSeconds(2f);
-
+        lr = line.GetComponent<LineRenderer>();
+        lr.material = new Material(Shader.Find("Unlit/Texture"));
+        lr.enabled = true;
+        lr.loop = true;
+        lr.startWidth = 0.1f;
+        lr.endWidth = 0.1f;
+        lr.SetPosition(0, player.transform.position);
+        lr.SetPosition(1, mousepos);
     }
+    
+
 }
