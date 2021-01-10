@@ -42,10 +42,10 @@ public class Player : MonoBehaviour
             lr.enabled = false;
             if (!readyToJump) return;
             float force = Vector3.Distance(player.transform.position, mousepos);
-            player.velocity = player.transform.up * force;
+            player.velocity = player.transform.up * force * 1.5f;
             readyToJump = false;
             
-            Debug.Log("asd"+player.transform.forward);
+            
         }
 
        
