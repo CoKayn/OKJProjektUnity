@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
         readyToJump = true;
         if (collision.gameObject.tag == "Enemy")
         {
+            
             Vector3 direction = new Vector3(collision.GetContact(0).point.x, collision.GetContact(0).point.y - 0.4f) - player.transform.position;
             direction = -direction;
             player.velocity = direction * 30;
