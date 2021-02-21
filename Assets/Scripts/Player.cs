@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
-    private bool grounded;
     private bool readyToJump;
     public GameObject line;
-    private float jumpForce = 100;
     public Rigidbody2D player;
     public ParticleSystem particleEffect;
+    public ParticleSystem particleEffectPlayer;
+    public Canvas respawnDialog;
 
     // Visuals
     public LineRenderer lr;
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         player.freezeRotation = true;
         Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButton(0)) 
-        {      
+        {       
             DrawLine(mousepos);
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
             Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -57,6 +57,14 @@ public class Player : MonoBehaviour
             particleEffect.transform.position = collision.gameObject.transform.position;
             particleEffect.Play();
             Destroy(collision.gameObject);           
+        }
+        else if (collision.gameObject.tag == "Lava")
+        {
+            particleEffectPlayer.Stop();
+            particleEffectPlayer.transform.position = player.transform.position;
+            particleEffectPlayer.Play();
+            gameObject.SetActive(false);
+            respawnDialog.gameObject.SetActive(true);
         }
     }
     void DrawLine(Vector3 mousepos)

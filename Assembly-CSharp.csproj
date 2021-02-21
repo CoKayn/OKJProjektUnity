@@ -65,9 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraOnPlayer.cs" />
+    <Compile Include="Assets\Scripts\DontDestroyAudio.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Respawn.cs" />
     <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -658,6 +660,9 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
@@ -675,6 +680,9 @@
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
@@ -702,12 +710,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/Peti/Desktop/Projektmunka/OKJProjektUnity/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
