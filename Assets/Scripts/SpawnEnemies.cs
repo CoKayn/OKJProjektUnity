@@ -7,12 +7,9 @@ public class SpawnEnemies : MonoBehaviour
     public GameObject player;
     public GameObject normalEnemy;
     private float distance;
-    private float distanceUsed;
 
     // Update is called once per frame
-    private void Start()
-    {
-    }
+  
     void Update()
     {
         float x = player.transform.position.x;

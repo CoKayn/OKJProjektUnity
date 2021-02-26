@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     private bool readyToJump;
-    public GameObject line;
-    public Rigidbody2D player;
-    public ParticleSystem particleEffect;
-    public ParticleSystem particleEffectPlayer;
-    public Canvas respawnDialog;
+    [SerializeField] private GameObject line;
+    [SerializeField] private Rigidbody2D player;
+    [SerializeField] private ParticleSystem particleEffect;
+    [SerializeField] private ParticleSystem particleEffectPlayer;
+    [SerializeField] private Canvas respawnDialog;
+    [SerializeField] private GameObject gameActive;
+    
 
     // Visuals
-    public LineRenderer lr;
+    [SerializeField] private LineRenderer lr;
     void Start()
     {
         line = new GameObject();
@@ -25,24 +27,27 @@ public class Player : MonoBehaviour
     void Update()
     {
         player.freezeRotation = true;
-        Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButton(0)) 
-        {       
-            DrawLine(mousepos);
-            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-            Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
-            lookPos = lookPos - transform.position;
-            float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-            player.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        }
-        if (Input.GetMouseButtonUp(0))
+        if (!PauseMenu.GameIsPaused)
         {
+        Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Input.GetMouseButton(0)) 
+            {
+                DrawLine(mousepos);
+                Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+                Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
+                lookPos = lookPos - transform.position;
+                float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
+                player.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            }    
+            if (Input.GetMouseButtonUp(0))
+            {
             lr.enabled = false;
             if (!readyToJump) return;
             float force = Vector3.Distance(player.transform.position, mousepos);
             player.velocity = player.transform.up * force * 1.5f;
             readyToJump = false;            
-        }       
+            }       
+        }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {

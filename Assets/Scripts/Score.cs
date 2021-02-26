@@ -11,10 +11,9 @@ public class Score : MonoBehaviour
     private const int FOURTIMESCOMBO = 2;
     private const int FIVETIMESCOMBO = 1;
     
-    public Text ScoreText;
+    [SerializeField] private Text ScoreText;
     private int ScoreValue;
-    private int ScoreMultiplier;
-    private int ComboTimer;
+
     // Start is called before the first frame update
     void Start()
     {
