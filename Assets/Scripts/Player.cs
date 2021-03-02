@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem particleEffectPlayer;
     [SerializeField] private Canvas respawnDialog;
     [SerializeField] private GameObject gameActive;
-    
+    public Material shader;
 
     // Visuals
     [SerializeField] private LineRenderer lr;
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     void DrawLine(Vector3 mousepos)
     {
         lr = line.GetComponent<LineRenderer>();
-        lr.material = new Material(Shader.Find("Unlit/Texture"));
+        lr.material = shader;  //new Material(Shader.Find("Unlit/Texture"));
         lr.enabled = true;
         lr.loop = true;
         lr.startWidth = 0.1f;

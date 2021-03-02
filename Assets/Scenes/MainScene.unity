@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 111328577}
   - component: {fileID: 111328576}
   - component: {fileID: 111328575}
+  - component: {fileID: 111328580}
   m_Layer: 0
   m_Name: Lava
   m_TagString: Lava
@@ -263,8 +264,8 @@ SpriteShapeRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5bf86f665da47f34f8051fe2e6296854, type: 2}
+  - {fileID: 2100000, guid: 5bf86f665da47f34f8051fe2e6296854, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -285,7 +286,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 1, g: 0.21404596, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 0}
   m_Sprites: []
@@ -306,6 +307,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &111328580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111328574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57127870055f8a244bdb0ac5f70affa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 2100000, guid: 5bf86f665da47f34f8051fe2e6296854, type: 2}
 --- !u!1 &151404463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1101,7 @@ GameObject:
   - component: {fileID: 459628807}
   - component: {fileID: 459628810}
   - component: {fileID: 459628811}
+  - component: {fileID: 459628812}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -1178,8 +1193,8 @@ SpriteShapeRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c0b992236a987e049b50b096238d0825, type: 2}
+  - {fileID: 2100000, guid: c0b992236a987e049b50b096238d0825, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1215,8 +1230,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459628806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.04, y: -1.82, z: 0}
-  m_LocalScale: {x: 22.852858, y: 0.66321284, z: 1}
+  m_LocalPosition: {x: 0.06, y: -2.08, z: 0}
+  m_LocalScale: {x: 10, y: 0.95073587, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -1236,12 +1251,12 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.00000023841858}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
@@ -1256,9 +1271,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 459628806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37cfd4a4e53dca349b28a7141254ed7f, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &459628812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459628806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad590e1f859130468799594a86c10de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 2100000, guid: c0b992236a987e049b50b096238d0825, type: 2}
 --- !u!1 &465359771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,6 +1456,7 @@ MonoBehaviour:
   particleEffectPlayer: {fileID: 1318412288}
   respawnDialog: {fileID: 1279349057}
   gameActive: {fileID: 0}
+  shader: {fileID: 2100000, guid: 37eb0f9caa367ba4fa7930c0888a1d1e, type: 2}
   lr: {fileID: 0}
 --- !u!114 &468282223
 MonoBehaviour:
