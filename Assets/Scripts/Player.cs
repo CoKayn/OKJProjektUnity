@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem particleEffectPlayer;
     [SerializeField] private Canvas respawnDialog;
     [SerializeField] private GameObject gameActive;
-    public Material shader;
+    [SerializeField] private Material shader;
 
     // Visuals
     [SerializeField] private LineRenderer lr;
